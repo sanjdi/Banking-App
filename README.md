@@ -1,5 +1,5 @@
 # Banking-App API
-This is a simple term deposit final balance calculator built on Node.js. Use provided enpoint to as descibed in [APIDoc](#APIDoc). 
+This is a simple term deposit final balance calculator built on Node.js. 
 
 ## Setup
 
@@ -38,6 +38,8 @@ Banking App v1.0.0 API Docs are available at http://localhost:4000/api/docs
 ```
 
 ## Run
+Use any of the following methods to run the app.
+
 ### Postman
 After the Node.js server is up, use [Postman API Client](https://www.postman.com/api-platform/api-client/) to test the endpoint.
 
@@ -61,19 +63,19 @@ Request Body:
 * amount: number - Specify the starting amount
 * rate: number - Specify the annual percentage interest rate (APR), without % sign
 * term: number - Specify the investment term in months
-* compound: string - Specify the frequency that interest is paid. Allowed values are "MONTHLY", "QUATERLY", "ANNUALLY" or "AT_MATURITY"
-* yield: string - Specify the interest payment type. Allowed values are "RE_INVEST" or "INCOME_STREAM"
+* compound: string - Specify the frequency that interest is paid. Allowed values are *MONTHLY*, *QUATERLY*, *ANNUALLY* or *AT_MATURITY*
+* yield: string - Specify the interest payment type. Allowed values are *RE_INVEST* or *INCOME_STREAM*
 
 ### APIDoc
-After the Node.js server is up, use API doc to test the endpoint. [Swagger](https://swagger.io/docs/specification/basic-structure/) API doc is vailable at bellow uri. ie. http://localhost:4000/api/docs as in #7 above.
+After the Node.js server is up, use API doc to test the endpoint. [Swagger](https://swagger.io/docs/specification/basic-structure/) doc is vailable at bellow uri. ie. http://localhost:4000/api/docs as in #7 above.
 ```sh
 http://{server}:{port}/api/docs
 ```
-Click 'Try it out' button to test the API.
+Click *Try it out* button to test the API.
 
 ![image](https://github.com/sanjdi/Banking-App/assets/135525812/a8c2a1c3-6d1f-4274-b60a-fd6868aaf894)
 
-Edit the request json payload as required, and click 'Execute' button. Response will be displayed under 'Server response' section. 
+Edit the request json payload as required, and click *Execute* button. Response will be displayed under *Server response* section. 
 
 ![image](https://github.com/sanjdi/Banking-App/assets/135525812/9879ebac-9560-4a02-b0c7-aa990afdb7bd)
 
