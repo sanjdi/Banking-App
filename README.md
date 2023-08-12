@@ -48,7 +48,7 @@ http://{server}:{port}/api/docs
 ie. http://localhost:4000/api/docs as in #7 above
 ```
 Click 'Try it out' button to test the API.
-![APIDoc1](src/docs/APIDocs1.PNG)
+![APIDoc1](src/docs/APIDocs1.png)
 
 Edit json request payload, and click 'Execute' button. Response will be displayed under 'Server response' section. 
-![APIDoc2](src/docs/APIDocs2.PNG)
+![APIDoc2](src/docs/APIDocs2.png)
