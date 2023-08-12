@@ -1,5 +1,5 @@
 # Banking-App API
-This is a simple term deposit final balance calculator built on Node.js. Use provided enpoint to as descibed in [APIDoc](https://github.com/sanjdi/Banking-App/edit/main/README.md#APIDoc). 
+This is a simple term deposit final balance calculator built on Node.js. Use provided enpoint to as descibed in [APIDoc](#APIDoc). 
 
 ## Setup
 
@@ -48,7 +48,7 @@ http://{server}:{port}/api/docs
 ie. http://localhost:4000/api/docs as in #7 above
 ```
 Click 'Try it out' button to test the API.
-![APIDoc1](src/docs/APIDocs1.png)
+![APIDoc1](src/docs/APIDocs1.PNG)
 
 Edit json request payload, and click 'Execute' button. Response will be displayed under 'Server response' section. 
-![APIDoc2](src/docs/APIDocs2.png)
+![APIDoc2](src/docs/APIDocs2.PNG)
