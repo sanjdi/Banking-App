@@ -39,16 +39,41 @@ Banking App v1.0.0 API Docs are available at http://localhost:4000/api/docs
 
 ## Run
 ### Postman
-sasa
+After the Node.js server is up, use [Postman API Client](https://www.postman.com/api-platform/api-client/) to test the endpoint.
+
+![image](https://github.com/sanjdi/Banking-App/assets/135525812/7da6039b-6bc9-49bc-bee8-41e7ae9ff3a3)
+**Request Format**
+```sh
+METHOD: POST
+URI: http://localhost:4000/api/calculators/term-deposits
+Request Body Type: raw Json
+Request Body:
+{
+    "amount": "10000",
+    "rate": "1.1",
+    "term": "36",
+    "compound": "AT_MATURITY",
+    "yield": "RE_INVEST"
+}
+```
+**Request Body**
+
+* amount: number - Specify the starting amount
+* rate: number - Specify the annual percentage interest rate (APR), without % sign
+* term: number - Specify the investment term in months
+* compound: string - Specify the frequency that interest is paid. Allowed values are "MONTHLY", "QUATERLY", "ANNUALLY" or "AT_MATURITY"
+* yield: string - Specify the interest payment type. Allowed values are "RE_INVEST" or "INCOME_STREAM"
 
 ### APIDoc
-Once the server is up after #7 above, a fully functional swagger doc is vailable at bellow uri. It allows you to test endpoints.
+After the Node.js server is up, use API doc to test the endpoint. [Swagger](https://swagger.io/docs/specification/basic-structure/) API doc is vailable at bellow uri. ie. http://localhost:4000/api/docs as in #7 above.
 ```sh
 http://{server}:{port}/api/docs
-ie. http://localhost:4000/api/docs as in #7 above
 ```
 Click 'Try it out' button to test the API.
-![APIDoc1](src/docs/APIDocs1.png)
 
-Edit json request payload, and click 'Execute' button. Response will be displayed under 'Server response' section. 
-![APIDoc2](src/docs/APIDocs2.png)
+![image](https://github.com/sanjdi/Banking-App/assets/135525812/a8c2a1c3-6d1f-4274-b60a-fd6868aaf894)
+
+Edit the request json payload as required, and click 'Execute' button. Response will be displayed under 'Server response' section. 
+
+![image](https://github.com/sanjdi/Banking-App/assets/135525812/9879ebac-9560-4a02-b0c7-aa990afdb7bd)
+
