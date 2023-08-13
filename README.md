@@ -67,7 +67,7 @@ Request Body:
 * yield: string - Specify the interest payment type. Allowed values are *RE_INVEST* or *INCOME_STREAM*
 
 ### APIDoc
-After the Node.js server is up, use API doc to test the endpoint. [Swagger](https://swagger.io/docs/specification/basic-structure/) doc is vailable at bellow uri. ie. http://localhost:4000/api/docs as in #7 above.
+After the Node.js server is up, use API doc to test the endpoint. [OpenAPI (former Swagger)](https://swagger.io/docs/specification/about/) doc will be vailable at bellow uri. ie. http://localhost:4000/api/docs as in [Setup Steps](#Steps) #7 above.
 ```sh
 http://{server}:{port}/api/docs
 ```
