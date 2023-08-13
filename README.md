@@ -1,5 +1,5 @@
 # Banking-App API
-This is a simple term deposit final balance calculator built on Node.js. 
+This is a simple term deposit final balance calculator built on Node.js with TypeScript. 
 
 ## Setup
 
