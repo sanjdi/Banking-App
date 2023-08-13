@@ -1,6 +1,27 @@
-# Banking-App API
-This is a simple term deposit final balance calculator built on Node.js with TypeScript. 
+# Banking-App
+This is a simple term deposit final balance calculator built on Node.js with TypeScript. It provides 2 enpoints to calculate final balance. 
 
+## Design
+### Architecture
+![image](https://github.com/sanjdi/Banking-App/assets/135525812/a54dc4de-d610-4870-a38b-394fbef12e9c)
+
+**Route** - Implemented with Express.js. Will pass incomming HTTP requests to the controller module.
+
+**Controller** - Facilitate mapping of *client-server* data flow and service execution
+* Read requests parameters
+* Validate input values and pass errors to client if needed. ie. incorrect data type
+* Execute relevent service methods and pass the response back to client
+
+**Service Layer** - Contaions and executes calculation logic.
+
+### Inputs
+
+It requires following input paramters for execution.
+* amount: number - Specify the starting amount
+* rate: number - Specify the annual percentage interest rate (APR), without % sign
+* term: number - Specify the investment term in months
+* compound: string - Specify the frequency that interest is paid. Allowed values are *MONTHLY*, *QUATERLY*, *ANNUALLY* or *AT_MATURITY*
+* yield: string - Specify the interest payment type. Allowed values are *RE_INVEST* or *INCOME_STREAM*
 ## Setup
 
 ### Prerequisites
@@ -46,15 +67,6 @@ npm test
 
 ## Run
 After the Node.js server is up, use any of the following methods to run the app.
-
-### Inputs
-
-It requires following input paramters for execution.
-* amount: number - Specify the starting amount
-* rate: number - Specify the annual percentage interest rate (APR), without % sign
-* term: number - Specify the investment term in months
-* compound: string - Specify the frequency that interest is paid. Allowed values are *MONTHLY*, *QUATERLY*, *ANNUALLY* or *AT_MATURITY*
-* yield: string - Specify the interest payment type. Allowed values are *RE_INVEST* or *INCOME_STREAM*
 
 ### Postman API Client
 
