@@ -27,6 +27,6 @@ export const swaggerDocs = (
     res.send(swaggerSpec);
   });
   console.log(
-    `Banking App v1.0.0 API Docs are available at http://localhost:${port}/api/docs`
+    `Banking App API Docs are available at http://localhost:${port}/api/docs`
   );
 };
