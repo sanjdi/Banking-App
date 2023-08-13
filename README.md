@@ -4,11 +4,13 @@ This is a simple term deposit final balance calculator built on Node.js with Typ
 ## Setup
 
 ### Prerequisites
-* [Node.js](https://nodejs.org/en/docs)
+Following tools are required to run and test the application in your local mechine.
+* [Node.js](https://nodejs.org/en/docs) - the server environment for the application
+* [Visual Studio Code](https://code.visualstudio.com/) - the integrated development environment 
 * [Postman API Client](https://www.postman.com/api-platform/api-client/) - only if you intend to test using Postman. Please see [RUN](#Run) section for alternative testing options.
 
 ### Steps
-1. Create a folder
+1. Open a new termail in Visual [Visual Studio Code](https://code.visualstudio.com/). Create a new folder
 ```sh
 mkdir repo
 ```
@@ -33,10 +35,14 @@ npm install
 npm start
 ```
 7. If all went ok, you will see bellow lines at the end of the terminal window.
+![image](https://github.com/sanjdi/Banking-App/assets/135525812/5ebad6ca-ac89-4b6b-a956-1dee51c52725)
+
+8. After the Node.js server is up, open a new terminal window in [Visual Studio Code](https://code.visualstudio.com/). Execute bellow command to run the unit test suite.
 ```sh
-Calculator API is listening on -> http://localhost:4000
-Banking App v1.0.0 API Docs are available at http://localhost:4000/api/docs
+npm test
 ```
+9. If something similar to this displayed, then you are all set.
+![image](https://github.com/sanjdi/Banking-App/assets/135525812/40383173-f7a7-4808-8177-8abcc82f4986)
 
 ## Run
 After the Node.js server is up, use any of the following methods to run the app.
