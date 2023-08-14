@@ -1,18 +1,18 @@
 # Banking-App
-This is a simple term deposit final balance calculator built on Node.js with TypeScript. It provides 2 enpoints to calculate final balance. 
+This is a simple term deposit final balance calculator built on [Node.js](https://nodejs.org/en/docs) with [TypeScript](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html). It provides 2 enpoints to calculate final balance. 
 
 ## Design
 ### Architecture
 ![image](https://github.com/sanjdi/Banking-App/assets/135525812/a54dc4de-d610-4870-a38b-394fbef12e9c)
 
-**Route** - Implemented with Express.js. Will pass incomming HTTP requests to the controller module.
+**Route** - Implemented with [Express.js](https://expressjs.com/en/guide/routing.html). Will pass incomming HTTP requests to the controller module.
 
 **Controller** - Facilitate mapping of *client-server* data flow and service execution
 * Read requests parameters
 * Validate input values and pass errors to client if needed. ie. incorrect data type
 * Execute relevent service methods and pass the response back to client
 
-**Service Layer** - Contaions and executes calculation logic.
+**Service** - Contains and executes calculation logic.
 
 ### Inputs
 
@@ -22,16 +22,60 @@ It requires following input paramters for execution.
 * term: number - Specify the investment term in months
 * compound: string - Specify the frequency that interest is paid. Allowed values are *MONTHLY*, *QUATERLY*, *ANNUALLY* or *AT_MATURITY*
 * yield: string - Specify the interest payment type. Allowed values are *RE_INVEST* or *INCOME_STREAM*
+
+### Maintainability
+1. To add new frequency that interest is paid. ie. compound the interest "WEEKLY"
+
+* Add "WEEKLY" value to CompoundingType enum
+```sh
+../models/deposit.ts
+export enum CompoundingType {
+  ....
+  ....
+  Weekly = "WEEKLY",
+}
+```
+
+* Add number of times componding is calculated per year to calculatorService.compoundingTypeMapping object
+```sh
+../services/calculatorService.ts
+export const compoundingTypeMapping = {
+  ....
+  ....
+  WEEKLY: 52,
+};
+```
+
+* Set WEEKLY as the *compound* parameter value when calling endpoints  
+```sh
+METHOD: GET
+URI: http://localhost:4000/api/calculators/term-deposits?amount=10000&rate=1.1&term=36&compound=WEEKLY&yield=RE_INVEST
+```
+Or
+```sh
+METHOD: POST
+URI: http://localhost:4000/api/calculators/term-deposits
+Request Body Type: raw Json
+Request Body:
+{
+    "amount": "10000",
+    "rate": "1.1",
+    "term": "36",
+    "compound": "WEEKLY",
+    "yield": "RE_INVEST"
+}
+```
+
 ## Setup
 
 ### Prerequisites
 Following tools are required to run and test the application in your local mechine.
 * [Node.js](https://nodejs.org/en/docs) - the server environment for the application
 * [Visual Studio Code](https://code.visualstudio.com/) - the integrated development environment 
-* [Postman API Client](https://www.postman.com/api-platform/api-client/) - only if you intend to test using Postman. Please see [RUN](#Run) section for alternative testing options.
+* *Optional* [Postman API Client](https://www.postman.com/api-platform/api-client/) - required only if you intend to run the application using Postman. Please see [Run](#Run) section for alternative options.
 
 ### Steps
-1. Open a new termail in Visual [Visual Studio Code](https://code.visualstudio.com/). Create a new folder
+1. Open a new termail window in [Visual Studio Code](https://code.visualstudio.com/). Create a new folder
 ```sh
 mkdir repo
 ```
@@ -55,20 +99,20 @@ npm install
 ```sh
 npm start
 ```
-7. If all went ok, you will see bellow lines at the end of the terminal window.
+7. If all went ok, you will see something similar to this.
 ![image](https://github.com/sanjdi/Banking-App/assets/135525812/5ebad6ca-ac89-4b6b-a956-1dee51c52725)
 
 8. After the Node.js server is up, open a new terminal window in [Visual Studio Code](https://code.visualstudio.com/). Execute bellow command to run the unit test suite.
 ```sh
 npm test
 ```
-9. If something similar to this displayed, then you are all set.
+9. If something similar to this is displayed, then you are all set.
 ![image](https://github.com/sanjdi/Banking-App/assets/135525812/40383173-f7a7-4808-8177-8abcc82f4986)
 
 ## Run
 After the Node.js server is up, use any of the following methods to run the app.
 
-### Postman API Client
+### Option 1: Postman API Client
 
 1. To test *GET* endpoint, specify query parametres with required values, and click *Send*. Response will be displayed in the pannel.
 ```sh
@@ -94,11 +138,12 @@ Request Body:
 ![image](https://github.com/sanjdi/Banking-App/assets/135525812/7da6039b-6bc9-49bc-bee8-41e7ae9ff3a3)
 
 
-### OpenAPI Doc
+### Option 2: OpenAPI Doc
 
-1. [OpenAPI (former Swagger)](https://swagger.io/docs/specification/about/) doc will be vailable at bellow uri. ie. http://localhost:4000/api/docs as metioned in [Setup](#Steps) #7 above.
+1. [OpenAPI (former Swagger)](https://swagger.io/docs/specification/about/) doc will be vailable at bellow uri.
 ```sh
 http://{server}:{port}/api/docs
+ie. http://localhost:4000/api/docs - as metioned in [Setup](#Steps) step #7 above
 ```
 ![image](https://github.com/sanjdi/Banking-App/assets/135525812/787d110d-af92-4a4f-8712-c1f7ed87e61c)
 
