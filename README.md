@@ -24,7 +24,9 @@ It requires following input paramters for execution.
 * yield: string - Specify the interest payment type. Allowed values are *RE_INVEST* or *INCOME_STREAM*
 
 ### Maintainability
-1. To add new frequency that interest is paid. ie. compound the interest "WEEKLY"
+Bellow scenarios describe how you can extend the application
+
+**Scenario 1:** Add new frequency that interest is paid. ie. compound the interest "WEEKLY"
 
 * Add "WEEKLY" value to CompoundingType enum
 ```sh
@@ -66,7 +68,8 @@ Request Body:
 }
 ```
 
-2. Extend the application to calculate cash deposit final balance. ie. use simple interest rate calculation formula.
+
+**Scenario 2:** Extend the application to calculate cash deposit final balance. ie. use simple interest rate calculation formula.
 
 * At Service layer, define a function that performs simple interest rate calculation in ../services/calculatorService.ts
 ```sh
