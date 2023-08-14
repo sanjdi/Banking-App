@@ -66,6 +66,64 @@ Request Body:
 }
 ```
 
+2. Extend the application to calculate cash deposit final balance. ie. use simple interest rate calculation formula.
+
+* At Service layer, define a function that performs simple interest rate calculation in ../services/calculatorService.ts
+```sh
+../services/calculatorService.ts
+...
+...
+export const calculateSimpleRateFinalAmount = (params: DepositOptions) => {
+  const { startingAmount, interestRate, investmentTerm, extraDeposit } = params;
+  ...
+  let balance: number;
+  /* implement calculation logic */
+  ...
+  return balance;
+};
+...
+```
+
+* At Controller layer, define a new route that will accept requests new url path
+```sh
+../controllers/calculatorController.ts
+import { ..., ..., calculateSimpleRateFinalAmount } from '../services/calculatorService.js';
+....
+....
+export const getCashDepositFinalBalance = (
+  req: Express.Request,
+  res: Express.Response
+) => {
+  ...
+  ...
+  /* implement field validations logic */
+  /* add input values to a DepositOptions object */
+  /* call service function */
+  const result: FinalBalance = {
+    finalBalance: calculateSimpleRateFinalAmount(options),
+  };
+  /* log the result to console */
+  /* send reponse with FinalBalance to client */
+};
+....
+```
+
+* At Route layer, define a new route that will accept requests new url path
+```sh
+../routes/calculatorRoutes.ts
+import { ..., ..., getCashDepositFinalBalance } from '../controllers/calculatorController.js';
+....
+....
+router.get('/cash-deposits', getCashDepositFinalBalance);
+....
+```
+
+* Call the new endpoint  
+```sh
+METHOD: GET
+URI: http://localhost:4000/api/calculators/cash-deposits?amount=10000&rate=0.25&term=36
+```
+
 ## Setup
 
 ### Prerequisites
