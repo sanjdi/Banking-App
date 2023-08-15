@@ -71,12 +71,25 @@ Request Body:
 
 **Scenario 2:** Extend the application to calculate cash deposit final balance. ie. use simple interest rate calculation formula.
 
-* At Service layer, define a function that performs simple interest rate calculation in ../services/calculatorService.ts
+* At Model, define the schema of CashDepositOptions that contain parameters needed for new formula
+```sh
+../models/deposit.ts
+...
+...
+export interface CachDepositOptions {
+  startingAmount: number;
+  interestRate: number;
+  investmentTerm: number;
+}
+```
+
+* At Service layer, define a function that performs simple interest rate calculation
 ```sh
 ../services/calculatorService.ts
+import { ..., ..., CashDepositOptions } from '../models/deposit.js';
 ...
 ...
-export const calculateSimpleRateFinalAmount = (params: DepositOptions) => {
+export const calculateSimpleRateFinalAmount = (params: CashDepositOptions) => {
   const { startingAmount, interestRate, investmentTerm, extraDeposit } = params;
   ...
   let balance: number;
@@ -87,10 +100,11 @@ export const calculateSimpleRateFinalAmount = (params: DepositOptions) => {
 ...
 ```
 
-* At Controller layer, define a new route that will accept requests new url path
+* At Controller layer, define a new function that maps requests, perform validations, execute service calls and send responses to new url 
 ```sh
 ../controllers/calculatorController.ts
 import { ..., ..., calculateSimpleRateFinalAmount } from '../services/calculatorService.js';
+import { ..., ..., CashDepositOptions } from '../models/deposit.js';
 ....
 ....
 export const getCashDepositFinalBalance = (
@@ -100,8 +114,13 @@ export const getCashDepositFinalBalance = (
   ...
   ...
   /* implement field validations logic */
-  /* add input values to a DepositOptions object */
-  /* call service function */
+  ...
+  /* create a CashDepositOptions object */
+  const options: CashDepositOptions = {
+    /* add input values in required format */
+  };
+
+  /* call the service */
   const result: FinalBalance = {
     finalBalance: calculateSimpleRateFinalAmount(options),
   };
@@ -111,7 +130,7 @@ export const getCashDepositFinalBalance = (
 ....
 ```
 
-* At Route layer, define a new route that will accept requests new url path
+* At Route layer, define a new route that will accept requests from new url path
 ```sh
 ../routes/calculatorRoutes.ts
 import { ..., ..., getCashDepositFinalBalance } from '../controllers/calculatorController.js';
