@@ -150,6 +150,8 @@ URI: http://localhost:4000/api/calculators/cash-deposits?amount=10000&rate=0.25&
 
 ### Prerequisites
 Following tools are required to run and test the application in your local mechine.
+* [Git](https://git-scm.com/) - the version control system
+* [npm](https://docs.npmjs.com/about-npm) - the package manager
 * [Node.js](https://nodejs.org/en/docs) - the server environment for the application
 * [Visual Studio Code](https://code.visualstudio.com/) - the integrated development environment 
 * *Optional* [Postman API Client](https://www.postman.com/api-platform/api-client/) - required only if you intend to run the application using Postman. Please see [Run](#Run) section for alternative options.
